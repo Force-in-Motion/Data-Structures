@@ -31,7 +31,7 @@ class HashMap:
 
         self.__count += 1  # Увеличиваем количество элементов на 1
 
-    def get(self, key):
+    def get(self, key) -> Exception or object:
         """
         Возвращает значение по полученному ключу
         :param key: Пренимает ключ
@@ -44,3 +44,19 @@ class HashMap:
 
         return self.__array[hash]  # Иначе возвращаем значение
 
+    def delete(self, key: any) -> bool or Exception:
+        """
+        Удаляет значение по полученному ключу если ключ существует в массиве
+        :param key: Принимает ключ
+        :return: Возвращает True or Exception
+        """
+        hash = self.__hash(key)
+
+        if self.__array[hash] is None:
+            raise Exception('Ключ не найден')
+
+        self.__array[hash] = None
+
+        self.__count -= 1
+
+        return True

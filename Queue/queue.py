@@ -15,7 +15,7 @@ class Queue:
         Добавляет элемент в очередь c хвоста
         :return: bool
         """
-        node = Node(item) # Создаем ноду
+        node = Node(item)  # Создаем ноду
 
         self.__count += 1  # Увеличиваем количество нод на 1
 
@@ -54,7 +54,7 @@ class Queue:
 
     def __get_tail(self) -> Node:
         """
-        :return: Возвращает первый элемент с хвоста очереди
+        :return: Возвращает последний элемент очереди
         """
         return self.__tail
 
@@ -75,5 +75,4 @@ class Queue:
     tail = property(__get_tail)
     count = property(__get_count)
     empty = property(__is_empty)
-
 
