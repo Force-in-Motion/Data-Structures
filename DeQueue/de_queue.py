@@ -117,4 +117,3 @@ class DeQueue:
     tail = property(__peek_tail)
     count = property(__get_count)
     empty = property(__is_empty)
-
