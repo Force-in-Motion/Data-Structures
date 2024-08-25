@@ -28,6 +28,7 @@ class Queue:
         self.__tail = node  # А затем хвосту присваиваем новую ноду, таким образом указатель хвоста смещается влево, на новую ноду, а старый хвост уходит в сторону середины очереди
 
         return True
+
     def dequeue(self) -> Node or Exception:
         """
         Удаляет элемент из головы очереди и возвращает его
@@ -53,7 +54,7 @@ class Queue:
 
     def __get_tail(self) -> Node:
         """
-        :return: Возвращает ноду, на которую ссылается self.__tail в данный момент
+        :return: Возвращает первый элемент с хвоста очереди
         """
         return self.__tail
 
@@ -65,9 +66,9 @@ class Queue:
 
     def __is_empty(self) -> bool:
         """
-        Вы полняет проверку очереди на пустоту
-        :return: bool
+        :return: Возвращает True если очередь пуста и False если в ней есть элементы
         """
+
         return True if self.__count == 0 else False
 
     head = property(__peek)
