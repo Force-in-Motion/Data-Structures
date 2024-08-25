@@ -1,10 +1,10 @@
-class Node:
-    def __init__(self, data):
-        self.data = data  # Данные ноды
-        self.prev = None  # Ссылка на предыдущий элемент
-
 
 class Queue:
+    class Node:
+        def __init__(self, data):
+            self.data = data  # Данные ноды
+            self.prev = None  # Ссылка на предыдущий элемент
+
     def __init__(self):
         self.__head = None  # Указатель головы очереди
         self.__tail = None  # Указатель хвоста очереди
@@ -15,7 +15,7 @@ class Queue:
         Добавляет элемент в очередь c хвоста
         :return: bool
         """
-        node = Node(item)  # Создаем ноду
+        node = Queue.Node(item)  # Создаем ноду
 
         self.__count += 1  # Увеличиваем количество нод на 1
 
@@ -35,7 +35,7 @@ class Queue:
         """
         assert self.__count != 0, ValueError('Очередь пуста, удалять нечего, для начала добавьте ноды')
 
-        current_node = self.__head  # Поскольку нам нужно вернуть удаляемую ноду, то нам нужно сохранить ее в переменную перед удалением ибо после удаления ссылки на нее уже не будет
+        result_data = self.__head.data  # Поскольку нам нужно вернуть удаляемую ноду, то нам нужно сохранить ее в переменную перед удалением ибо после удаления ссылки на нее уже не будет
 
         self.__head = self.__head.prev  # После этого мы голове по ссылке присваиваем предыдущую ноду, на первую ноду теперь никто не ссылается поэтому она удаляется, здесь работаем с головой, если в очереди 1 нода то по ссылке на предыдущий элемент мы голове присвоим None поскольку перед единственной нодой ничего нет
 
@@ -44,19 +44,19 @@ class Queue:
 
         self.__count -= 1  # Уменьшаем количество нод на 1
 
-        return current_node
+        return result_data
 
     def __peek(self) -> Node:
         """
         :return: Возвращает первый элемент с головы в очереди
         """
-        return self.__head
+        return self.__head.data
 
     def __get_tail(self) -> Node:
         """
         :return: Возвращает последний элемент очереди
         """
-        return self.__tail
+        return self.__tail.data
 
     def __get_count(self) -> int:
         """
@@ -75,4 +75,5 @@ class Queue:
     tail = property(__get_tail)
     count = property(__get_count)
     empty = property(__is_empty)
+
 

@@ -1,21 +1,21 @@
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.prev = None
-
 
 class DeQueue:
+    class Node:
+        def __init__(self, data):
+            self.data = data
+            self.prev = None
+
     def __init__(self):
         self.__head = None
         self.__tail = None
         self.__count = 0
 
-    def enqueue_head(self, item) -> bool:
+    def enqueue_head(self, data) -> bool:
         """
         Добавляет элемент в очередь c головы
         :return: bool
         """
-        node = Node(item)
+        node = DeQueue.Node(data)
 
         self.__count += 1
 
@@ -29,12 +29,12 @@ class DeQueue:
 
         return True
 
-    def enqueue_tail(self, item) -> bool:
+    def enqueue_tail(self, data) -> bool:
         """
         Добавляет элемент в очередь c хвоста
         :return: bool
         """
-        node = Node(item)
+        node = DeQueue.Node(data)
 
         self.__count += 1
 
@@ -55,7 +55,7 @@ class DeQueue:
         """
         assert self.__count != 0, ValueError('Очередь пуста, удалять нечего')
 
-        current_node = self.__head
+        result_data = self.__head.data
 
         self.__head = self.__head.prev
 
@@ -64,7 +64,7 @@ class DeQueue:
 
         self.__count -= 1
 
-        return current_node.data
+        return result_data
 
     def dequeue_tail(self) -> Node or Exception:
         """
@@ -73,7 +73,7 @@ class DeQueue:
         """
         assert self.__count != 0, ValueError('Очередь пуста, удалять нечего')
 
-        current_node = self.__tail
+        result_data = self.__tail.data
 
         if self.__count == 1:
             self.dequeue_head()
@@ -87,19 +87,19 @@ class DeQueue:
 
         self.__count -= 1
 
-        return current_node
+        return result_data
 
     def __peek_head(self) -> Node:
         """
         :return: Возвращает первый элемент с головы
         """
-        return self.__head
+        return self.__head.data
 
     def __peek_tail(self) -> Node:
         """
         :return: Возвращает первый элемент с головы
         """
-        return self.__tail
+        return self.__tail.data
 
     def __get_count(self) -> int:
         """
