@@ -99,13 +99,13 @@ class DList:
 
             return True
 
-    def remove_of_data(self, item: any) -> bool or Exception: # Сложность алгоритма O(1) / O(N) / O(N)
+    def remove_of_data(self, data: any) -> bool or Exception: # Сложность алгоритма O(1) / O(N) / O(N)
         """
         Удаляяет первое вхождение элемента item. Если данного элемента в списке нет, породить исключение ValueError()
         :param item: Пренимает элемент поиска
         :return: True или ValueError
         """
-        assert item in self.__array_memory, ValueError('В массиве нет такого элемента')
+        assert data in self.__array_memory, ValueError('В массиве нет такого элемента')
 
         if self.__count == 1:
             self.remove_front()
@@ -113,7 +113,7 @@ class DList:
 
         for i in range(0, self.__count, 1):
 
-            if self.__array_memory[i] == item:
+            if self.__array_memory[i] == data:
                 self.__array_memory[i], self.__array_memory[i+1] = self.__array_memory[i+1], self.__array_memory[i]
 
         self.__array_memory[self.__count] = None
